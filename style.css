@@ -1,0 +1,382 @@
+body {
+  overflow: hidden;
+  background-color: #000;
+  margin: 0; /* Bra praxis att nollställa margin */
+}
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* --- NYTT: Container för textgrupper --- */
+/* Detta ser till att varje uppsättning text ligger i ett lager ovanpå animationen */
+/* --- VIKTIGT: Container för textgrupper --- */
+.text-group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  pointer-events: none;
+  
+  /* LÖSNINGEN: Allt är osynligt som standard */
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Undantag: Intro-gruppen ska synas direkt vid laddning */
+.intro-group {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.callout {
+  position: absolute;
+  font-size: 50px;
+  top: 52%;
+  left: 50%; /* Detta är "målpositionen", JS startar den på 150% */
+  font-weight: 900;
+  color: white;
+  /* z-index behövs inte här om .text-group har det, men skadar inte att behålla */
+  z-index: 999; 
+  text-align: center;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.subtitle {
+  position: absolute;
+  font-size: 20px;
+  top: 52%;
+  left: 50%;
+  margin-top: 50px;
+  font-weight: 400;
+  color: white;
+  z-index: 999;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.subtitle-list {
+  position: absolute;
+  
+  /* POSITIONERING */
+  top: auto;          /* Nollställ top */
+  bottom: 30%;        /* Placera 35% från skärmens botten */
+  left: 50%;
+  
+  /* JUSTERING */
+  /* Ändra till translateX för att behålla botten-positionen fast */
+  transform: translateX(-50%); 
+  
+  width: 80vw;
+  text-align: center;
+  z-index: 999;
+  
+  /* Ta bort margin-top om du vill ha exakt 35% */
+  margin-top: 0; 
+}
+
+/* Utseende för varje rad i listan */
+.list-item {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 5px; /* ÄNDRAT: Minskat från 10px för tajtare lista */
+  opacity: 0;
+  position: relative;
+  line-height: 1.2;   /* Bra för att hålla ihop raderna */
+}
+
+/* Lägg till detta i din CSS-fil */
+.super-title {
+  position: absolute;
+  font-size: 24px; /* Lite mindre än callout */
+  top: 42%; /* Ligger ovanför callout (som är på 52%) */
+  left: 50%;
+  font-weight: 300;
+  color: #ffffff; /* Rosa färg för att skilja den från resten */
+  z-index: 999;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* JS kommer hantera visningen */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Gör rubriken mindre och tillåt radbrytning */
+.rest-group-1 .callout {
+  font-size: 35px;       /* Mindre text (standard är 50px) */
+  white-space: normal;   /* Tillåt texten att radbryta (standard är nowrap) */
+  width: 80vw;           /* Begränsa bredden så den bryter snyggt */
+  line-height: 1.2;      /* Snyggare radavstånd om den bryter */
+}
+
+/* Justera underrubriken om den hamnar fel */
+.rest-group-1 .subtitle {
+  font-size: 18px;       /* Om du vill ändra denna också */
+  margin-top: 30px;      /* Justera avståndet till rubriken */
+}
+.rest-group-2 .callout {
+  font-size: 35px;       /* Mindre text (standard är 50px) */
+  white-space: normal;   /* Tillåt texten att radbryta (standard är nowrap) */
+  width: 80vw;           /* Begränsa bredden så den bryter snyggt */
+  line-height: 1.2;      /* Snyggare radavstånd om den bryter */
+}
+
+/* Justera underrubriken om den hamnar fel */
+.rest-group-2 .subtitle {
+  font-size: 18px;       /* Om du vill ändra denna också */
+  margin-top: 30px;      /* Justera avståndet till rubriken */
+}
+.rest-group-3 .callout {
+  font-size: 35px;       /* Mindre text (standard är 50px) */
+  white-space: normal;   /* Tillåt texten att radbryta (standard är nowrap) */
+  width: 80vw;           /* Begränsa bredden så den bryter snyggt */
+  line-height: 1.2;      /* Snyggare radavstånd om den bryter */
+}
+
+/* Justera underrubriken om den hamnar fel */
+.rest-group-3 .subtitle {
+  font-size: 18px;       /* Om du vill ändra denna också */
+  margin-top: 30px;      /* Justera avståndet till rubriken */
+}
+.rest-group-4 .callout {
+  font-size: 35px;       /* Mindre text (standard är 50px) */
+  white-space: normal;   /* Tillåt texten att radbryta (standard är nowrap) */
+  width: 80vw;           /* Begränsa bredden så den bryter snyggt */
+  line-height: 1.2;      /* Snyggare radavstånd om den bryter */
+}
+
+/* Justera underrubriken om den hamnar fel */
+.rest-group-4 .subtitle {
+  font-size: 18px;       /* Om du vill ändra denna också */
+  margin-top: 30px;      /* Justera avståndet till rubriken */
+}
+.rest-group-5 .callout {
+  font-size: 35px;       /* Mindre text (standard är 50px) */
+  white-space: normal;   /* Tillåt texten att radbryta (standard är nowrap) */
+  width: 80vw;           /* Begränsa bredden så den bryter snyggt */
+  line-height: 1.2;      /* Snyggare radavstånd om den bryter */
+}
+
+/* Justera underrubriken om den hamnar fel */
+.rest-group-5 .subtitle {
+  font-size: 18px;       /* Om du vill ändra denna också */
+  margin-top: 30px;      /* Justera avståndet till rubriken */
+}
+/* --- PANELER (Oförändrade) --- */
+
+.panel1 {
+  width: 100vw;
+  height: 100vh;
+  background: #ff95ec;
+  position: absolute;
+}
+.panel1:nth-of-type(1) {
+  z-index: 11;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 99%);
+}
+.panel1:nth-of-type(2) {
+  z-index: 10;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 98%);
+}
+.panel1:nth-of-type(3) {
+  z-index: 9;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 97%);
+}
+.panel1:nth-of-type(4) {
+  z-index: 8;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 96%);
+}
+.panel1:nth-of-type(5) {
+  z-index: 7;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 95%);
+}
+.panel1:nth-of-type(6) {
+  z-index: 6;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 94%);
+}
+.panel1:nth-of-type(7) {
+  z-index: 5;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 93%);
+}
+.panel1:nth-of-type(8) {
+  z-index: 4;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 92%);
+}
+.panel1:nth-of-type(9) {
+  z-index: 3;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 91%);
+}
+.panel1:nth-of-type(10) {
+  z-index: 2;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 90%);
+}
+.panel1:nth-of-type(11) {
+  z-index: 1;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 89%);
+}
+.panel1:nth-of-type(12) {
+  z-index: 0;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 88%);
+}
+
+.panel2 {
+  width: 0;
+  height: 0;
+  background: #ff95ec;
+  position: absolute;
+}
+.panel2:nth-of-type(1) {
+  z-index: 11;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 99%);
+}
+.panel2:nth-of-type(2) {
+  z-index: 10;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 98%);
+}
+.panel2:nth-of-type(3) {
+  z-index: 9;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 97%);
+}
+.panel2:nth-of-type(4) {
+  z-index: 8;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 96%);
+}
+.panel2:nth-of-type(5) {
+  z-index: 7;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 95%);
+}
+.panel2:nth-of-type(6) {
+  z-index: 6;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 94%);
+}
+.panel2:nth-of-type(7) {
+  z-index: 5;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 93%);
+}
+.panel2:nth-of-type(8) {
+  z-index: 4;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 92%);
+}
+.panel2:nth-of-type(9) {
+  z-index: 3;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 91%);
+}
+.panel2:nth-of-type(10) {
+  z-index: 2;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 90%);
+}
+.panel2:nth-of-type(11) {
+  z-index: 1;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 89%);
+}
+.panel2:nth-of-type(12) {
+  z-index: 0;
+  background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 88%);
+}
+
+#start-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000; /* Svart bakgrund för att dölja animationen bakom */
+  z-index: 10000; /* Måste vara högre än allt annat (text-groups har 999) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease; /* Snygg transition när den försvinner */
+  cursor: pointer;
+}
+
+#start-overlay.hidden {
+  opacity: 0;
+  pointer-events: none; /* Gör att man kan klicka på animationen bakom sen */
+}
+
+.loader-container {
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+}
+
+.loader-container p {
+  margin-top: 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: pulse 2s infinite;
+}
+
+/* Spinner CSS (Modern Cirkel) */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ff95ec; /* Matchar din rosa färg i temat */
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* --- NYTT: Artist Image Styling --- */
+.artist-image-container {
+  position: absolute;
+  top: 60%; /* Startposition, kommer justeras av JS */
+  left: 50%;
+  transform: translate(-50%, 0); /* Centrera horisontellt */
+  z-index: 999;
+  opacity: 0; /* Osynlig från start, JS animerar in den */
+  
+  /* Justera storleken på bilden här */
+  width: 500px; 
+  height: auto;
+}
+
+.artist-image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /* Snygga rundade hörn */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* En djup skugga för "pop"-effekt */
+  display: block; /* Tar bort eventuellt extra mellanrum under bilden */
+}
+
+/* --- Artist Message (Chat bubble style) --- */
+.artist-message {
+  position: absolute;
+  top: 20%; /* Vi placerar den lite över bilden i startläget, JS flyttar runt */
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80vw;
+  max-width: 600px;
+  
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.4;
+  font-style: italic;
+  color: #fff;
+  text-align: center;
+  
+  /* Gör det lite snyggare med bakgrund eller skugga om man vill, 
+     men här kör vi ren text som Spotify ofta gör */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  
+  opacity: 0; /* JS hanterar visning */
+  z-index: 1000; /* Ligg ovanpå allt */
+  margin-top: 150px; /* Justera detta beroende på hur stor bilden är */
+}

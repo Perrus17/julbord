@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sv" >
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Wrapped Animation 2025</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="start-overlay">
+  <div class="loader-container">
+    <div class="spinner"></div>
+    <p></p>
+  </div>
+</div>
+
+<div class="bg">
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  <div class="panel panel1"></div>
+  
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+  <div class="panel panel2"></div>
+</div>
+
+<div class="text-group intro-group">
+  <h1 class="callout">Fikarum Wrapped<br>2025</h1>
+  <h2 class="subtitle">Based on real conversations (allegedly)</h2>
+</div>
+
+<div class="text-group rest-group-1">
+  <h1 class="callout">Your Top Genre was:</h1>
+  <h2 class="subtitle">Puzzles you regret starting</h2>
+  
+  <div class="subtitle-list">
+    <div class="list-item">🇮🇸 Your nemesis: The Iceland puzzle</div>
+    <div class="list-item">🧩 Status: Still unfinished</div>
+    <div class="list-item">🌋 Problem: "Everything looks like lava"</div>
+    <div class="list-item">🌍 Irony: "But... we are Geographers?"</div>
+  </div>
+</div>
+
+<div class="text-group rest-group-2">
+  <h1 class="callout">Your Top Song was...</h1>
+  <h2 class="subtitle">"The Vegetable Conspiracy"<br>Artist: Roger</h2>
+  
+  <div class="subtitle-list">
+    <div class="list-item">🎧 Genre: Culinary Criticism</div>
+    <div class="list-item">📉 Mood: Disappointment</div>
+    <div class="list-item">🥦 🥦 🥦</div>
+  </div>
+</div>
+<div class="text-group rest-group-3">
+  <h1 class="callout">Your Top Artist...</h1>
+  <h2 class="subtitle">The Evaluation Panel<br>(feat. Don, Susanna & Sierdjan)</h2>
+  
+  <div class="artist-image-container">
+    <img src="./artist.jpeg" alt="The Evaluation Panel">
+  </div>
+
+  <div class="artist-message">
+    "Hey Umeå! Thanks for a great year. We love your research, but please... stop apologizing for being 'peripheral'. You live in the Arctic, that is trendy now! Own it!"
+  </div>
+</div>
+
+<div class="text-group rest-group-4">
+  <h1 class="callout">You spent 84,000 minutes memorizing...</h1>
+  <h2 class="subtitle">The complete cast of Göta Canal 1<br>Who Pulled the Plug? (1981)</h2>
+  
+ <div class="artist-image-container">
+    <img src="./who-pulled.jpg" alt="Who Pulled The Plug">
+  </div>
+</div>
+
+<div class="text-group rest-group-5">
+  <h1 class="callout">Your Listening Personality</h1>
+  <h2 class="subtitle">The Informal Mentor</h2>
+  
+  <div class="subtitle-list">
+    <div class="list-item">✨ Superpower: Spontaneous supervision</div>
+    <div class="list-item">☕ Method: Solving problems at the fika table</div>
+    <div class="list-item">🏅 Verdict: "Praised by the Evaluation Panel"</div>
+  </div>
+</div>
+<audio id="bg-music" src="./music.mp3" loop></audio>
+
+<script src='https://unpkg.com/gsap@3/dist/gsap.min.js'></script>
+<script src="./script.js"></script>
+</body>
+</html>
